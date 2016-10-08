@@ -120,6 +120,8 @@ public abstract class SelectableAdapter<S, T extends SelectableAdapter.ViewHolde
         public ViewHolder(View itemView, ClickListener clickListener) {
             super(itemView);
             mClickListener = clickListener;
+            itemView.setOnClickListener(this);
+            itemView.setOnLongClickListener(this);
         }
 
         @Override

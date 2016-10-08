@@ -61,9 +61,6 @@ public class ListItemAdapter extends SelectableAdapter<ListItem, ListItemAdapter
             mSelectedOverlay = itemView.findViewById(R.id.selected_overlay);
             mNameView = (TextView) itemView.findViewById(R.id.name);
             mDescriptionView = (TextView) itemView.findViewById(R.id.description);
-
-            itemView.setOnClickListener(this);
-            itemView.setOnLongClickListener(this);
         }
     }
 }
