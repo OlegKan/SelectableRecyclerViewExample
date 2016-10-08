@@ -21,17 +21,29 @@ import android.util.SparseBooleanArray;
 import android.view.View;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public abstract class SelectableAdapter<S, T extends SelectableAdapter.ViewHolder> extends
         RecyclerView.Adapter<T> {
 
-    protected ViewHolder.ClickListener mClickListener;
     private SparseBooleanArray mSelectedItems;
     private List<S> mData;
+    private ViewHolder.ClickListener mClickListener;
 
     public SelectableAdapter() {
         mSelectedItems = new SparseBooleanArray();
+        mData = Collections.emptyList();
+    }
+
+    public SelectableAdapter(ViewHolder.ClickListener clickListener) {
+        this();
+        mClickListener = clickListener;
+    }
+
+    public SelectableAdapter(ViewHolder.ClickListener clickListener, List<S> data) {
+        this(clickListener);
+        mData = data;
     }
 
     @Override
@@ -45,6 +57,14 @@ public abstract class SelectableAdapter<S, T extends SelectableAdapter.ViewHolde
 
     public void setData(List<S> data) {
         mData = data;
+    }
+
+    public ViewHolder.ClickListener getClickListener() {
+        return mClickListener;
+    }
+
+    public void setClickListener(ViewHolder.ClickListener clickListener) {
+        mClickListener = clickListener;
     }
 
     public boolean isSelected(int position) {

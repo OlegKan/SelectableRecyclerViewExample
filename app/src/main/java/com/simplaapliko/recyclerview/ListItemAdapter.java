@@ -26,14 +26,13 @@ import java.util.List;
 public class ListItemAdapter extends SelectableAdapter<ListItem, ListItemAdapter.ViewHolder> {
 
     public ListItemAdapter(List<ListItem> data, SelectableAdapter.ViewHolder.ClickListener clickListener) {
-        setData(data);
-        mClickListener = clickListener;
+        super(clickListener, data);
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item, parent, false);
-        return new ViewHolder(view, mClickListener);
+        return new ViewHolder(view, getClickListener());
     }
 
     @Override
